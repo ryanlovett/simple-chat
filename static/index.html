@@ -63,7 +63,8 @@ function close() {
 
 
 $(function() {
-    websocket = new WebSocket('ws://127.0.0.1:8000/chat');
+    var url = 'wss://' + document.location.hostname + document.location.pathname + '/chat';
+    websocket = new WebSocket(url);
     websocket.onopen = init(websocket);
     websocket.onerror = websocket.onclose = close;
     websocket.onmessage = newMessage;
